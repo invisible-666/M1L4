@@ -8,7 +8,14 @@ class Pokemon:
 
         self.pokemon_trainer = pokemon_trainer   
 
-        self.pokemon_common = randint(1, 1000)
+        self.pokemon_common = randint(1, 200)
+        self.pokemon_uncommon = randint(201,300)
+        self.pokemon_rare = randint(301,500)
+        self.pokemon_superare = randint(501,800)
+        self.pokemon_epik = randint(801,900)
+        self.pokemon_mifik = randint(901,980)
+        self.pokemon_legend = randint(981,1000)
+
         self.img = self.get_img()
         self.name = self.get_name()
 
@@ -21,7 +28,8 @@ class Pokemon:
         if response.status_code == 200:
             data = response.json()
             return (data['sprites']['other']['official-artwork']['front_defoult'])
-    
+        if self.img <= 200:
+            return(self.pokemon_common)
     # Метод для получения имени покемона через API
     def get_name(self):
         url = f'https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}'
