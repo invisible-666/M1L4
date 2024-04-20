@@ -30,6 +30,18 @@ class Pokemon:
             return (data['sprites']['other']['official-artwork']['front_defoult'])
         if self.img <= 200:
             return(self.pokemon_common)
+        if self.img >= 201 and self.img <=300:
+            return(self.pokemon_uncommon)
+        if self.img >= 301 and self.img < = 500:
+            return(self.pokemon_rare)
+        if self.img >= 501 and self.img <= 800:
+            return(self.pokemon_superare)
+        if self.img >= 801 and self.img <= 900:
+            return(self.pokemon_epik)
+        if self.img >= 901 and self.img <=980:
+            return(self.pokemon_mifik)
+        if self.img >= 981 and self.img <=1000:
+            return(self.pokemon_legend)
     # Метод для получения имени покемона через API
     def get_name(self):
         url = f'https://pokeapi.co/api/v2/pokemon/{self.pokemon_number}'
