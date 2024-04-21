@@ -8,18 +8,10 @@ class Pokemon:
     def __init__(self, pokemon_trainer):
 
         self.pokemon_trainer = pokemon_trainer   
-
-        self.pokemon_common = randint(1, 200)
-        self.pokemon_uncommon = randint(201,300)
-        self.pokemon_rare = randint(301,500)
-        self.pokemon_superare = randint(501,800)
-        self.pokemon_epik = randint(801,900)
-        self.pokemon_mifik = randint(901,980)
-        self.pokemon_legend = randint(981,1000)
-
         self.img = self.get_img()
         self.name = self.get_name()
-
+        self.hp = randint(200, 400)
+        self.power = randint(30, 60)
         Pokemon.pokemons[pokemon_trainer] = self
 
     # Метод для получения картинки покемона через API
@@ -42,24 +34,36 @@ class Pokemon:
 
     # Метод класса для получения информации
     def info(self):
-        return f"Имя твоего покеомона: {self.name}"
+        return f"""Имя твоего покеомона: {self.name}
+            Сила покемона {self.power}
+            Здоровье покемона {self.hp}"""
 
     # Метод класса для получения картинки покемона
     def show_img(self):
-        if self.img >= 1 and self.img <= 200:
-            return(self.pokemon_common)
-        if self.img >= 201 and self.img <=300:
-            return(self.pokemon_uncommon)
-        if self.img >= 301 and self.img <= 500:
-            return(self.pokemon_rare)
-        if self.img >= 501 and self.img <= 800:
-            return(self.pokemon_superare)
-        if self.img >= 801 and self.img <= 900:
-            return(self.pokemon_epik)
-        if self.img >= 901 and self.img <=980:
-            return(self.pokemon_mifik)
-        if self.img >= 981 and self.img <=1000:
-            return(self.pokemon_legend)
+        return self.ing()
+        
+    def attack(self.enemy):
+        if isinstance(enemy, Wizard):
+            chince = randint(1, 5)
+            if chance == 1:
+                return "Покемон применил щит в сражении"
+        if enemy.hp > self.power:
+            enemy.hp -= self.power
+            return f"Сражение @{self.pokemon_trainer} с @{enemy.pokemon_trainer}"
+        else:
+            enemy.hp = 0
+            return f"Победа @{self.pokemon_trainer} над @{enemy.pokemon_trainer}! "
+        
+class Wizard(Pokemon):
+    def info(self):
+        return "У тебя покемон волшебник \n\n" + super().info()
 
-
-
+class Fighter(Pokemon):
+    def attack(self):
+        super_power = randint(5, 15)
+        self.power += super_power
+        result = super().attack(enemy)
+        self.power -= super_power
+        return result + f"\nБоец применил суператаку силой: {super_power}"
+    def info(self):
+        return "У тебя боец \n\n" + super().info()
