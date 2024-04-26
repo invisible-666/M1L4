@@ -59,7 +59,13 @@ class Pokemon:
         else:
             enemy.hp = 0
             return f"Победа @{self.pokemon_trainer} над @{enemy.pokemon_trainer}! "
-
+    # Handle '/info'
+    @bot.message_handler(commands=['info'])
+    if message.from_user.username in Pokemon.pokemons.keys():
+        pok = Pokemon.pokemons[message.from_user.username]
+         bot.reply_to(message, """\
+            У твоего покемона {self.hp} жизни и {self.power} силы\
+            """)
 class Wizard(Pokemon):
     def info(self):
         return 'У тебя покемон волшебник \n\n' + super().info()
