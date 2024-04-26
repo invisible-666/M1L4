@@ -1,9 +1,8 @@
 import telebot 
 from config import token
-
 from logic import Pokemon
 
-bot = telebot.TeleBot('7058753529:AAHEKGkWEwclTCOM6W8VG-AunOU-fu1QzpI') 
+bot = telebot.TeleBot(Token) 
 
 @bot.message_handler(commands=['go'])
 def go(message):
