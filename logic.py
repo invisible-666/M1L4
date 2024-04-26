@@ -1,9 +1,7 @@
 from random import randint
 import requests
 
-
 bot = telebot.TeleBot("7058753529:AAHEKGkWEwclTCOM6W8VG-AunOU-fu1QzpI")
-
 
 class Pokemon:
     pokemons = {}
