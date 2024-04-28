@@ -2,6 +2,10 @@ from random import randint
 import requests
 from datetime import datetime, timedelta
 
+TOKEN = '7058753529:AAHEKGkWEwclTCOM6W8VG-AunOU-fu1QzpI'
+
+bot = telebot.TeleBot(TOKEN)
+
 class Pokemon:
     pokemons = {} # { username : pokemon}
     # Инициализация объекта (конструктор)
