@@ -1,4 +1,3 @@
-# Задание 2 - Импортируй нужные классы
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 token = "7058753529:AAHEKGkWEwclTCOM6W8VG-AunOU-fu1QzpI"
@@ -11,13 +10,11 @@ class Question:
         self.__answer_id = answer_id
         self.options = options
 
-    # Задание 1 - Создай геттер для получения текста вопроса
     @property
     def text(self):
         return self.__text
     
     def gen_markup(self):
-        # Задание 3 - Создай метод для генерации Inline клавиатуры
         markup = InlineKeyboardMarkup()
         markup.row_width = len(self.options)
 
@@ -27,8 +24,7 @@ class Question:
             else:
                 markup.add(InlineKeyboardButton(option, callback_data='wrong'))
         return markup
-
-# Задание 4 - заполни список своими вопросами
+    
 quiz_questions = [
     Question("Что котики делают, когда никто их не видит?", 1, "Спят", "Пишут мемы"),
     Question("Как котики выражают свою любовь?", 0, "Громким мурлыканием", "Отправляют фото на Instagram", "Гавкают"),
