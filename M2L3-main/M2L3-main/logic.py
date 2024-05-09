@@ -1,10 +1,10 @@
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
-import defaultdict
+from collections import defaultdict
 
 token = "7058753529:AAHEKGkWEwclTCOM6W8VG-AunOU-fu1QzpI"
 bot = telebot.TeleBot(token)
 
-points = defaultdict(0)
+points = defaultdict(int)
 
 class Question:
 
