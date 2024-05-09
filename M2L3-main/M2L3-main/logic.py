@@ -1,6 +1,9 @@
 # Задание 2 - Импортируй нужные классы
-
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+token = "7058753529:AAHEKGkWEwclTCOM6W8VG-AunOU-fu1QzpI"
+bot = telebot.TeleBot(token)
+
 class Question:
 
     def __init__(self, text, answer_id, *options):
@@ -18,7 +21,7 @@ class Question:
         markup = InlineKeyboardMarkup()
         markup.row_width = len(self.options)
 
-        for i, optionin enumerate(self.options):
+        for i, optionin in enumerate(self.options):
             if i == self.__answer_id:
                 markup.add(InlineKeyboardButton(option, callback_data='correct'))
             else:
