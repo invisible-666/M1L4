@@ -1,7 +1,10 @@
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+import defaultdict
 
 token = "7058753529:AAHEKGkWEwclTCOM6W8VG-AunOU-fu1QzpI"
 bot = telebot.TeleBot(token)
+
+points = defaultdict(0)
 
 class Question:
 
@@ -21,8 +24,10 @@ class Question:
         for i, optionin in enumerate(self.options):
             if i == self.__answer_id:
                 markup.add(InlineKeyboardButton(option, callback_data='correct'))
+                points += 1
             else:
                 markup.add(InlineKeyboardButton(option, callback_data='wrong'))
+                points = points
         return markup
     
 quiz_questions = [
@@ -30,3 +35,10 @@ quiz_questions = [
     Question("Как котики выражают свою любовь?", 0, "Громким мурлыканием", "Отправляют фото на Instagram", "Гавкают"),
     Question("Какие книги котики любят читать?", 3, "Обретение вашего внутреннего урр-мирения", "Тайм-менеджмент или как выделить 18 часов в день для сна", "101 способ уснуть на 5 минут раньше, чем хозяин", "Пособие по управлению людьми")
 ]
+
+
+def send_welcome(message):
+    bot.reply_to(message, f"""\
+Hi there, I am ArmanBot.
+У тебя {points} количевство очков!\
+""")
